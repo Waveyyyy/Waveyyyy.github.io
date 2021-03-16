@@ -1,19 +1,169 @@
-@import 'https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap';:root{
-    --sidebar-width: 170px;
-    --sidebar-height: 150px;
+@import 'https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap';
+
+:root {
+    --navbar-height: 150px:
 }
 
-html,body{
+html,body {
     min-height: 100%;
     font-family: 'Ubuntu Mono', monospace;
-    background-color: #2F4F4F;
+    background-color: #1e1e1e;
 }
 
-img{
+img {
     display: block;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    object-fit: cover;
+    width: 100%;
 }
 
 #centred-title {
     text-align: center;
     font-size: 60px
+}
+
+#navbar-button {
+    font-size: 40px;
+    cursor: pointer;
+    margin: 10px;
+    position: absolute;
+    margin-top: 0;
+}
+
+#navbar {
+    height: 100%;
+    width: 0px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color:#FFFFFF;
+    overflow-x: hidden;
+    padding-top: 15px;
+}
+
+@keyframes navbar-open {
+    from {height: 0px;}
+    to {width: var(--sidebar-height);}
+}
+
+@keyframes navbar-close {
+    from {height: var(--sidebar-height);}
+    to {width: 0px;}
+}
+
+#navbar.closed {
+    height: 0px;
+    animation-name: sidebar-close;
+    animation-duration: 0.5s;
+}
+
+#navbar.open{
+    height: var(--sidebar-height);
+    animation-name: sidebar-open;
+    animation-duration: 0.5s;
+}
+
+@media screen and (max-height: 600px) {
+    #navbar {
+        height: 0px;
+        width: 100%;
+        padding-top: 0px;
+    }
+
+    @keyframes navbar-open {
+        from {height: 0px;}
+        to {height: var(--sidebar-height);}
+    }
+
+    @keyframes navbar-close {
+        from {height: var(--sidebar-height);}
+        to {height: 0px;}
+    }
+
+    #navbar.closed {
+        width: 100%;
+        height: 0px;
+    }
+
+    #navbar.open {
+        width: 100px;
+        height: var(--sidebar-height);
+    }
+}
+
+#navbar a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 25px;
+    color: #919191;
+    display: block;
+    transition: 0.3s;
+    transform: translateZ(0);
+}
+
+#sidebar a:hover {
+    color: #f1f1f1;
+}
+
+#closebtn {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    margin-left: 50px;
+}
+
+#main {
+    margin-top: 0px;
+    margin-left: 0px;
+    display: block;
+    height:90%;
+}
+
+@keyframes main-open {
+    from {margin-top: 0px;}
+    to {margin-top: var(--navbar-height);}
+}
+
+@keyframes main-close {
+    from {margin-top: var(--navbar-height);}
+    to {margin-top: 0px}
+}
+
+#main.open {
+    margin-top : var(--navbar-height);
+    animation-name: main-open;
+    animation-duration: 0.5s;
+}
+
+#main.closed {
+    margin-left: 0px;
+    animation-name: main-closed;
+    animation-duration: 0.5s;
+}
+
+@media screen and (max-width: 600px) {
+	@keyframes main-open {
+		from {margin-top: 0px;}
+		to {margin-top: var(--sidebar-height);}
+	}
+
+	@keyframes main-close {
+		from {margin-top: var(--sidebar-height);}
+		to {margin-top: 0px;}
+	}
+
+	#main.open {
+		margin-left: 0px;
+		margin-top: var(--sidebar-height);
+	}
+
+	#main.closed {
+		margin-top: 0px;
+	}
 }
