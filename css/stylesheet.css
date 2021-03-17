@@ -1,0 +1,19 @@
+@import 'https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap';:root{
+    --sidebar-width: 170px;
+    --sidebar-height: 150px;
+}
+
+html,body{
+    min-height: 100%;
+    font-family: 'Ubuntu Mono', monospace;
+    background-color: #2F4F4F;
+}
+
+img{
+    display: block;
+}
+
+#centred-title {
+    text-align: center;
+    font-size: 60px
+}
